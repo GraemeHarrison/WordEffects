@@ -31,12 +31,14 @@ int main () {
     // convert char array to an NSString object
     NSString *inputString = [NSString stringWithUTF8String:inputChars];
     
+    // If string is a number do this:
     if ([inputString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]].location != NSNotFound) {
         
         // If inputString is number, convert it to integer
         int inputInt = [inputString intValue];
         NSLog(@"Conversion of NSString '%d' to Int was successful", inputInt);
-        
+    
+    // If string is not a number do this:
     } else {
        
         // print NSString object
@@ -49,6 +51,11 @@ int main () {
         // convert inputString to lowercase and print it
         inputString = [inputString lowercaseString];
         NSLog(@"Make it quieter: %@", inputString);
+        
+        // Canadianize string
+        NSString *canada = @"eh?";
+        inputString = [inputString stringByAppendingString:canada];
+        NSLog(@"Make it Canadian: %@", inputString);
         
     }
     
