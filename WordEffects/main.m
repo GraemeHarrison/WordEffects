@@ -53,7 +53,7 @@ int main () {
         NSLog(@"Make it quieter: %@", [inputString lowercaseString]);
         
         // Canadianize string
-        NSString *canada = @"eh?";
+        NSString *canada = @" eh?";
         //inputString = [inputString stringByAppendingString:canada];
         NSLog(@"Make it Canadian: %@", [inputString stringByAppendingString:canada]);
         
@@ -62,6 +62,9 @@ int main () {
             NSLog(@"I don't know");
         } else if ([inputString hasSuffix:@"!"])
             NSLog(@"Whoa, calm down!");
+        
+        // Replace all spaces with "-"
+        NSLog(@"%@", [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
     }
     return 0;
 }
