@@ -31,16 +31,26 @@ int main () {
     // convert char array to an NSString object
     NSString *inputString = [NSString stringWithUTF8String:inputChars];
     
-    // print NSString object
-    NSLog(@"Input was %@", inputString);
-    
-    // convert inputString to uppercase and print it
-    inputString = [inputString uppercaseString];
-    NSLog(@"Make it louder: %@", inputString);
-    
-    // convert inputString to lowercase and print it
-    inputString = [inputString lowercaseString];
-    NSLog(@"Make it quieter: %@", inputString);
+    if ([inputString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]].location != NSNotFound) {
+        
+        // If inputString is number, convert it to integer
+        int inputInt = [inputString intValue];
+        NSLog(@"Conversion of NSString '%d' to Int was successful", inputInt);
+        
+    } else {
+       
+        // print NSString object
+        NSLog(@"Input was %@", inputString);
+        
+        // convert inputString to uppercase and print it
+        inputString = [inputString uppercaseString];
+        NSLog(@"Make it louder: %@", inputString);
+        
+        // convert inputString to lowercase and print it
+        inputString = [inputString lowercaseString];
+        NSLog(@"Make it quieter: %@", inputString);
+        
+    }
     
     return 0;
 }
