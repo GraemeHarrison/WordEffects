@@ -31,40 +31,57 @@ int main () {
     // convert char array to an NSString object
     NSString *inputString = [[NSString stringWithUTF8String:inputChars] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     
-    // If string is a number do this:
-    if ([inputString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]].location != NSNotFound) {
-        
-        // If inputString is number, convert it to integer
-        int inputInt = [inputString intValue];
-        NSLog(@"Conversion of NSString '%d' to Int was successful", inputInt);
     
-    // If string is not a number do this:
-    } else {
-       
-        // print NSString object
-        NSLog(@"Input was %@", inputString);
+    while (YES) {
+        NSLog(@"What would you like to do with your string?\n 1) Uppercase it\n 2) Lowercase it\n 3) Numberize it\n 4) Canadianize it\n 5) Respond to it\n 6) De-Space-It");
+        int optionNum = 0;
+        scanf("%d", &optionNum);
         
-        // convert inputString to uppercase and print it
-        //inputString = [inputString uppercaseString];
-        NSLog(@"Make it louder: %@", [inputString uppercaseString]);
+        if (optionNum == 1) {
+            // convert inputString to uppercase and print it
+            //inputString = [inputString uppercaseString];
+            NSLog(@"Make it louder: %@", [inputString uppercaseString]);
         
-        // convert inputString to lowercase and print it
-        //inputString = [inputString lowercaseString];
-        NSLog(@"Make it quieter: %@", [inputString lowercaseString]);
-        
-        // Canadianize string
-        NSString *canada = @" eh?";
-        //inputString = [inputString stringByAppendingString:canada];
-        NSLog(@"Make it Canadian: %@", [inputString stringByAppendingString:canada]);
-        
-        // Respond to quesitons and exclamations
-        if ([inputString hasSuffix:@"?"]) {
-            NSLog(@"I don't know");
-        } else if ([inputString hasSuffix:@"!"])
-            NSLog(@"Whoa, calm down!");
-        
-        // Replace all spaces with "-"
-        NSLog(@"%@", [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
+        } else if (optionNum == 2){
+            // convert inputString to lowercase and print it
+            //inputString = [inputString lowercaseString];
+            NSLog(@"Make it quieter: %@", [inputString lowercaseString]);
+            
+        } else if (optionNum == 3){
+            // If string is a number do this:
+            if ([inputString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]].location != NSNotFound) {
+                
+                // If inputString is number, convert it to integer
+                int inputInt = [inputString intValue];
+                NSLog(@"Conversion of NSString '%d' to Int was successful", inputInt);
+                
+                // If string is not a number do this:
+            } else {
+                
+                // print NSString object
+                NSLog(@"Input '%@' is not a number and thus cannot be converted into an Int", inputString);
+            }
+            
+        } else if (optionNum == 4){
+            // Canadianize string
+            NSString *canada = @" eh?";
+            //inputString = [inputString stringByAppendingString:canada];
+            NSLog(@"Make it Canadian: %@", [inputString stringByAppendingString:canada]);
+            
+        } else if (optionNum == 5){
+            // Respond to quesitons and exclamations
+            if ([inputString hasSuffix:@"?"]) {
+                NSLog(@"I don't know");
+            } else if ([inputString hasSuffix:@"!"])
+                NSLog(@"Whoa, calm down!");
+            
+        } else if (optionNum == 6){
+            // Replace all spaces with "-"
+            NSLog(@"%@", [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"]);
+            
+        } else {
+            NSLog(@"Please make sure your input is a number");
+        }
     }
     return 0;
 }
