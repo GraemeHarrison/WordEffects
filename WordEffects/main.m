@@ -34,5 +34,13 @@ int main () {
     // print NSString object
     NSLog(@"Input was %@", inputString);
     
+    // convert inputString to uppercase and print it
+    inputString = [inputString uppercaseString];
+    NSLog(@"Make it louder: %@", inputString);
+    
+    // convert inputString to lowercase and print it
+    inputString = [inputString lowercaseString];
+    NSLog(@"Make it quieter: %@", inputString);
+    
     return 0;
 }
